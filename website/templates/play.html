@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Using your local chessboard.js files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='chessboardjs-1.0.0/css/chessboard-1.0.0.min.css')}}">
+    <script src="{{ url_for('static', filename='chessboardjs-1.0.0/js/chessboard-1.0.0.min.js')}}"></script>
+</head>
+<body>
+    <div id="content">
+        <h1>Flask is working propdwadwaerly!</h1>
+        <div class="game-container">
+            <div class="board-container">
+                <div id="board" style="width: 40rem"></div>
+            </div>
+            <div class="chat-container">
+                <div class="message-container"></div>
+                <div class="input-container">
+                    <form action="">
+                        <input type="text">
+                    </form>
+                    <input type="submit" name="" id="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+
+}
+
+#content {
+    background-color: bisque;
+    height: 100vh;
+}
+
+.game-container {
+    display: flex;
+    background-color: black;
+    padding: 3rem;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.board-container {
+    height: 40rem;
+    width: 40rem;
+    background-color: bisque;
+    padding: 0;
+
+}
+
+.chat-container {
+    height: 40rem;
+    width: 30rem;
+    background-color: blue;
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.message-container {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+}
+
+.input-container {
+    display: flex;
+}
