@@ -3,6 +3,7 @@
 
 // Modern approach using fetch
 
+import { longToShortNotation } from "./to_san.js"
 
 var board = null
 var game = new Chess()
@@ -15,32 +16,39 @@ function onDragStart (source, piece, position, orientation) {
   if (piece.search(/^b/) !== -1) return false
 }
 
-function makeRandomMove () {
-  fetch('http://localhost:5000/api/stockfish', {
+async function makeRandomMove () {
+  console.log('here')
+  let response = await fetch('http://127.0.0.1:5000/api/stockfish/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      key1: 'value1',
-      key2: 'value2'
+      current_fen: game.fen()
     })
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+  // .then(response => response.json())
+  // .then(data => {
+  //   console.log('Success:', data);
+  // })
+  // .catch(error => {
+  //   console.error('Error:', error);
+  // });
+
+  let json = await response.json()
+  console.log(json)
+  let data = json.data;
+
+  // let data_san = longToShortNotation(data_lan);
   
   var possibleMoves = game.moves()
 
   // game over
   if (possibleMoves.length === 0) return
 
-  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-  game.move(possibleMoves[randomIdx])
+  // var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  game.move(data)
+
   board.position(game.fen())
 }
 
