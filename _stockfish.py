@@ -6,7 +6,7 @@ def get_best_move(fen_string, current_elo):
     '''
     Returns the FEN string of the best move from stockfish
     '''
-    stockfish = Stockfish(path="/Users/calebwang/Downloads/stockfish/stockfish-macos-m1-apple-silicon", depth=5,
+    stockfish = Stockfish(path="website/static/stockfish-macos-m1-apple-silicon", depth=5,
                       parameters={
                           "Threads": 1,
                           "Hash": 8,
