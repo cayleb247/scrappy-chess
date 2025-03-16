@@ -1,19 +1,18 @@
 from stockfish import Stockfish
 import chess
 
-stockfish = Stockfish(path="/Users/calebwang/Downloads/stockfish/stockfish-macos-m1-apple-silicon",
-                      parameters={
-                          "Threads": 1,
-                          "Skill Level": 20,
-                          "Minimum Thinking Time": 5,
-                          "UCI_Elo": 1350
-                      })
 
-def get_best_move(fen_string):
+def get_best_move(fen_string, current_elo):
     '''
     Returns the FEN string of the best move from stockfish
     '''
-    
+    stockfish = Stockfish(path="/Users/calebwang/Downloads/stockfish/stockfish-macos-m1-apple-silicon", depth=5,
+                      parameters={
+                          "Threads": 1,
+                          "Hash": 8,
+                          "Minimum Thinking Time": 1000,
+                          "UCI_Elo": current_elo
+                      })
 
     stockfish.set_fen_position(fen_string)
 

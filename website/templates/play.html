@@ -13,15 +13,26 @@
 </head>
 <body>
     <div id="content">
-        <h1>Chess Chatter</h1>
+        <h1><strong>Chess</strong> <em>Chatter</em></h1>
         <div class="game-container">
             <div id="board" style="width: 41rem"></div>
             <div class="chat-container">
-                <div class="message-container"></div>
+                <div class="profile-container">
+                    <div class="profile">
+                        <img src="{{ url_for ('static', filename='./images/sad_stockfish.png')}}" alt="emotional stockfish">
+                        <h3>Emotional Stockfish</h3>
+                    </div>
+                    <div class="elo-container">
+                        <p>Elo Rating:</p>
+                        <p class="elo"></p>
+                    </div>
+                </div>
+                <div class="message-container">
+                </div>
                 <div class="input-container">
-                    <form action="">
-                        <input type="text">
-                        <input type="submit" name="" id="">
+                    <form id="user-input" method="post">
+                        <input id="the-input" type="text" name="user-message" placeholder="Type your message here">
+                        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></button>
                     </form>
                 </div>
             </div>

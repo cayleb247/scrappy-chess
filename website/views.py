@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify, request, session, url_for, redirect
 from _stockfish import get_best_move
-from chat_messages import
+from chat_messages import getChatResponse
 from flask_cors import CORS
 
 views = Blueprint('views', __name__)
@@ -9,17 +9,17 @@ CORS(views)
 def play():
     return render_template("play.html")
 
-@views.route("/test")
-def test():
-    return render_template("test.html")
-
 @views.route("/api/stockfish/", methods=['POST'])
 def get_move():
     data = request.json
-    return jsonify(data = get_best_move(data['current_fen']))
+    print(data["current_elo"])
+    return jsonify(data = get_best_move(data['current_fen'], data['current_elo']))
 
 @views.route("/api/chatgpt/", methods=['POST'])
-def get_move():
+def get_response():
     data = request.json
-    return jsonify(data = get_best_move(data['current_fen']))
+    print(data["emotion_history"])
+    score, output_message, emotion_history = getChatResponse(data["message"], data["emotion_history"])
+    print(score, output_message, emotion_history)
+    return jsonify({"score": score, "output_message": output_message, "emotion_history": emotion_history})
     
