@@ -4,41 +4,55 @@
 }
 
 #content {
-    background-color: bisque;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #181818;
     height: 100vh;
+}
+
+#content h1{
+    margin: 1rem;
+    font-size: 3rem;
 }
 
 .game-container {
     display: flex;
-    background-color: black;
-    padding: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
     box-sizing: border-box;
     justify-content: space-between;
+    gap: 1.5rem;
 }
 
-.board-container {
-    height: 40rem;
-    width: 40rem;
-    background-color: bisque;
-    padding: 0;
-
-}
 
 .chat-container {
-    height: 40rem;
+    max-height: 35rem;
     width: 30rem;
-    background-color: blue;
-    box-sizing: border-box;
-    padding: 2rem;
+    background-color: #3d3d3d;
 }
 
 .message-container {
-    background-color: white;
+    background-color: #3d3d3d;
     height: 100%;
     width: 100%;
+    border-radius: 1rem;
 
 }
 
 .input-container {
+    display: flex;
+}
+
+.input-container input[type='text'] {
+    width: 100%;
+    background-color: transparent;
+    padding: 0.5rem;
+    border: solid 1px black;
+    border-radius: 1rem;
+}
+
+.input-container form {
     display: flex;
 }

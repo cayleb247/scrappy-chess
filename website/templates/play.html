@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Using your local chessboard.js files -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='chessboardjs-1.0.0/css/chessboard-1.0.0.min.css')}}">
-    <script src="{{ url_for('static', filename='chessboardjs-1.0.0/js/chessboard-1.0.0.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chessboardjs-1.0.0/css/chessboard-1.0.0.css')}}">
+    <script src="{{ url_for('static', filename='chessboardjs-1.0.0/js/chessboard-1.0.0.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.js" integrity="sha512-oprzqYFJfo4Bx/nNEcSI0xo7ggJrLc+qQ6hrS3zV/Jn0C4dsg4gu+FXW/Vm0jP9CrV7e5e6dcLUYkg3imjfjbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div id="content">
-        <h1>Flask is working propdwadwaerly!</h1>
+        <h1>Chess Chatter</h1>
         <div class="game-container">
-            <div class="board-container">
-                <div id="board" style="width: 40rem"></div>
-            </div>
+            <div id="board" style="width: 41rem"></div>
             <div class="chat-container">
                 <div class="message-container"></div>
                 <div class="input-container">
                     <form action="">
                         <input type="text">
+                        <input type="submit" name="" id="">
                     </form>
-                    <input type="submit" name="" id="">
                 </div>
             </div>
         </div>
