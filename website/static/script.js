@@ -3,21 +3,47 @@
 
 // Modern approach using fetch
 
-import { longToShortNotation } from "./to_san.js"
+const gameOverDialog = document.querySelector("dialog") // use to create game over screen
 
 var board = null
 var game = new Chess()
 
+const playAgainButton = document.querySelector("dialog button");
+playAgainButton.addEventListener("click", () => {
+  gameOverDialog.close()
+  game.reset()
+  board.start()
+})
+
+function checkChessResult () {
+  if (game.in_checkmate()) {
+    if (game.turn() == 'w') {
+      return "Black wins by checkmate!"
+    }
+    else {
+      return "White wins by checkmate!"
+    }
+    
+  }
+  else if  (game.in_draw()) {
+    return "Game ends in stalemate!"
+  }
+}
+
 function onDragStart (source, piece, position, orientation) {
   // do not pick up pieces if the game is over
-  if (game.game_over()) return false
-
+  if (game.game_over()) {
+    const gameOverWinner = document.querySelector(".gameover-container p");
+    gameOverWinner.textContent = checkChessResult()
+    gameOverDialog.showModal();
+    return false
+  }
   // only pick up pieces for White
   if (piece.search(/^b/) !== -1) return false
 }
 
-async function makeRandomMove () {
-  console.log('here')
+async function makeStockfishMove () {
+
   let response = await fetch('http://127.0.0.1:5000/api/stockfish/', {
     method: 'POST',
     headers: {
@@ -27,26 +53,15 @@ async function makeRandomMove () {
       current_fen: game.fen()
     })
   })
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log('Success:', data);
-  // })
-  // .catch(error => {
-  //   console.error('Error:', error);
-  // });
 
   let json = await response.json()
-  console.log(json)
   let data = json.data;
 
-  // let data_san = longToShortNotation(data_lan);
-  
   var possibleMoves = game.moves()
 
   // game over
   if (possibleMoves.length === 0) return
 
-  // var randomIdx = Math.floor(Math.random() * possibleMoves.length)
   game.move(data)
 
   board.position(game.fen())
@@ -64,13 +79,17 @@ function onDrop (source, target) {
   if (move === null) return 'snapback'
 
   // make random legal move for black
-  window.setTimeout(makeRandomMove, 250)
+  window.setTimeout(makeStockfishMove, 250)
+
+
+
 }
 
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
 function onSnapEnd () {
   board.position(game.fen())
+
 }
 
 var config = {

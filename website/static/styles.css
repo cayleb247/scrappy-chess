@@ -56,3 +56,19 @@
 .input-container form {
     display: flex;
 }
+
+dialog {
+    border: 1px solid grey;
+    border-radius: 1rem;
+    top: calc(50%);
+    left: calc(50%);
+    transform: translate(-50%, -50%);
+}
+
+.dialog-content {
+    width: 100%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

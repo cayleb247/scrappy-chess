@@ -19,7 +19,6 @@ def get_best_move(fen_string):
 
     best_move = stockfish.get_best_move()
 
-
     board = chess.Board(fen_string)
 
     uci_move = board.parse_uci(best_move)
